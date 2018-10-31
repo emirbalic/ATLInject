@@ -1,0 +1,28 @@
+
+
+Number of transformation inspected: 21
+
+====================================================================================================================================================================================
+	TRANFORMATIONS COVERAGE:
+	-Transformation: Families2Persons;                          	 (Tij/MMi) coverage: 0.5                	 (Tij/MMj) coverage: 0.4444444444444444
+	-Transformation: BibTeXML2DocBook;                          	 (Tij/MMi) coverage: 0.25               	 (Tij/MMj) coverage: 0.4166666666666667
+	-Transformation: R2ML2OCL;                                  	 (Tij/MMi) coverage: 0.125              	 (Tij/MMj) coverage: 0.0949367088607595
+	-Transformation: KM32Metrics;                               	 (Tij/MMi) coverage: 0.061224489795918366 	 (Tij/MMj) coverage: 0.10526315789473684
+	-Transformation: KM32Problem;                               	 (Tij/MMi) coverage: 0.23577235772357724 	 (Tij/MMj) coverage: 1.0               
+	-Transformation: IEEE1471_2_MoDAF;                          	 (Tij/MMi) coverage: 0.5402298850574713 	 (Tij/MMj) coverage: 0.14285714285714285
+	-Transformation: ListMetamodelRefactoring;                  	 (Tij/MMi) coverage: 1.0                	 (Tij/MMj) coverage: 1.0               
+	-Transformation: University2Company;                        	 (Tij/MMi) coverage: 0.7058823529411765 	 (Tij/MMj) coverage: 0.46153846153846156
+	-Transformation: OCL2R2ML;                                  	 (Tij/MMi) coverage: 0.14563106796116504 	 (Tij/MMj) coverage: 0.11320754716981132
+	-Transformation: CPL2SPL;                                   	 (Tij/MMi) coverage: 0.3793103448275862 	 (Tij/MMj) coverage: 0.12472160356347439
+	-Transformation: SoftwareQualityControl2BugzillaFile;       	 (Tij/MMi) coverage: 0.35714285714285715 	 (Tij/MMj) coverage: 0.2608695652173913
+	-Transformation: KMLInjector;                               	 (Tij/MMi) coverage: 0.15555555555555556 	 (Tij/MMj) coverage: 0.3326959847036329
+	-Transformation: MicrosoftOfficeExcel2SoftwareQualityControl; 	 (Tij/MMi) coverage: 0.23076923076923078 	 (Tij/MMj) coverage: 0.7142857142857143
+	-Transformation: SoftwareQualityControl2MantisBTFile;       	 (Tij/MMi) coverage: 0.35714285714285715 	 (Tij/MMj) coverage: 0.14925373134328357
+	-Transformation: JavaSource2Table;                          	 (Tij/MMi) coverage: 0.35294117647058826 	 (Tij/MMj) coverage: 1.0               
+	-Transformation: KM32OWL;                                   	 (Tij/MMi) coverage: 0.2719298245614035 	 (Tij/MMj) coverage: 0.044585987261146494
+	-Transformation: Measure2Table;                             	 (Tij/MMi) coverage: 0.08               	 (Tij/MMj) coverage: 1.0               
+	-Transformation: Measure2XHTML;                             	 (Tij/MMi) coverage: 0.4                	 (Tij/MMj) coverage: 0.04220398593200469
+	-Transformation: ATL2Problem;                               	 (Tij/MMi) coverage: 0.0647985989492119 	 (Tij/MMj) coverage: 1.0               
+	-Transformation: TT2BDD;                                    	 (Tij/MMi) coverage: 0.45714285714285713 	 (Tij/MMj) coverage: 0.45454545454545453
+	-Transformation: SimpleClass2SimpleRDBMS;                   	 (Tij/MMi) coverage: 0.8125             	 (Tij/MMj) coverage: 1.0               
+====================================================================================================================================================================================

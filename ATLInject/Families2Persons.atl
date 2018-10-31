@@ -1,0 +1,51 @@
+-- @path FamiliesMM=/MyFamilies2Persons/metamodels/FamiliesMM.ecore
+-- @path Persons=/MyFamilies2Persons/metamodels/Persons.ecore
+module MyFamilies2Persons;
+create OUT : Persons from IN : FamiliesMM;
+
+helper context FamiliesMM!Member def: familyName : String =
+	if  self.oclIsTypeOf(FamiliesMM!Father) then
+		self.lastName
+	else
+		if self.oclIsTypeOf(FamiliesMM!Mother) then
+			self.lastName
+		else
+			if self.oclIsTypeOf(FamiliesMM!Son) then
+				self.lastName
+			else
+				self.lastName
+			endif
+		endif
+	endif;
+
+helper context FamiliesMM!Member def: isFemale() : Boolean =
+	if self.oclIsTypeOf(FamiliesMM!Daughter) or  self.oclIsTypeOf(FamiliesMM!Mother) then
+		true
+	else
+		
+			false
+	
+	endif;
+	
+rule Member2Male {
+	from
+		s : FamiliesMM!Member (not s.isFemale())
+	to
+		t : Persons!Male (
+			fullName <- s.firstName + ' ' + s.familyName	
+		)
+}
+
+--rule Member2Female {
+--	from
+--		s : FamiliesMM!Member (s.isFemale())
+--	to
+--		t : Persons!Female (
+--			fullName <- s.firstName + ' ' + s.familyName	
+--		)
+--}
+
+
+
+
+

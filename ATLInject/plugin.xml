@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated atl -->
+      <package
+            uri="http://www.eclipse.org/gmt/2005/ATL"
+            class="ATL.ATLPackage"
+            genModel="atl.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated atl -->
+      <package
+            uri="http://www.eclipse.org/gmt/2005/OCL"
+            class="OCL.OCLPackage"
+            genModel="atl.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated atl -->
+      <package
+            uri="http://www.eclipse.org/gmt/2005/ATL-PrimitiveTypes"
+            class="PrimitiveTypes.PrimitiveTypesPackage"
+            genModel="atl.genmodel"/>
+   </extension>
+   <extension
+         point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            id="ATLInject.contribution1"
+            objectClass="org.eclipse.core.resources.IFile">
+         <menu
+               id="ATLInject.menu1"
+               label="ATL Inject"
+               path="additions">
+            <separator
+                  name="group1">
+            </separator>
+         </menu>
+         <action
+               class="atlinject.popup.actions.generateXMI"
+               enablesFor="+"
+               id="ATLInject.newAction"
+               label="Generate XMI"
+               menubarPath="ATLInject.menu1/group1">
+         </action>
+         <action
+               class="atlinject.popup.actions.computeCoverage"
+               enablesFor="+"
+               id="ATLInject.newAction2"
+               label="Compute Coverage"
+               menubarPath="ATLInject.menu1/group1">
+         </action>
+      </objectContribution>
+   </extension>
+
+</plugin>

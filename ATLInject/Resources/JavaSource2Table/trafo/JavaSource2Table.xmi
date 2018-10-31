@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="ASCII"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:atl="http://www.eclipse.org/gmt/2005/ATL" xmlns:ocl="http://www.eclipse.org/gmt/2005/OCL">
+  <atl:Module location="4:1-114:2" name="JavaSource2Table">
+    <commentsBefore>-- @path JavaSource=/JavaSource2Table/JavaSource.ecore</commentsBefore>
+    <commentsBefore>-- @path Table=/JavaSource2Table/Table.ecore</commentsBefore>
+    <inModels location="5:25-5:40" name="IN" metamodel="/2"/>
+    <outModels location="5:8-5:19" name="OUT" metamodel="/1"/>
+    <elements xsi:type="atl:Helper" location="15:1-17:47">
+      <commentsBefore>-------------------------------------------------------------------------------</commentsBefore>
+      <commentsBefore>-- HELPERS --------------------------------------------------------------------</commentsBefore>
+      <commentsBefore>-------------------------------------------------------------------------------</commentsBefore>
+      <commentsBefore>-- This helper builds the sequence of all method definitions in all existing </commentsBefore>
+      <commentsBefore>-- classes.</commentsBefore>
+      <commentsBefore>-- Built sequence is ordered according to the couple (class_name, method_name).</commentsBefore>
+      <commentsBefore>-- RETURN:	Sequence(JavaSource!MethodDefinition)</commentsBefore>
+      <commentsAfter>-- This helper builds the content of the table cell associated with the context</commentsAfter>
+      <commentsAfter>-- MethodDefinition (row) and the input MethodDefinition (column).</commentsAfter>
+      <commentsAfter>-- The computed value corresponds to the number of calls of the second method</commentsAfter>
+      <commentsAfter>-- within the first method definition.</commentsAfter>
+      <commentsAfter>-- CONTEXT:	JavaSource!MethodDefinition</commentsAfter>
+      <commentsAfter>-- IN:		JavaSource!MethodDefinition</commentsAfter>
+      <commentsAfter>-- RETURN:	String</commentsAfter>
+      <definition location="15:8-17:46">
+        <feature xsi:type="ocl:Attribute" location="15:13-17:46" name="allMethodDefs">
+          <initExpression xsi:type="ocl:IteratorExp" location="16:2-17:46" name="sortedBy">
+            <source xsi:type="ocl:OperationCallExp" location="16:2-16:44" operationName="allInstances">
+              <source xsi:type="ocl:OclModelElement" location="16:2-16:29" name="MethodDefinition" model="/4"/>
+            </source>
+            <body xsi:type="ocl:OperatorCallExp" location="17:18-17:45" operationName="+">
+              <source xsi:type="ocl:OperatorCallExp" location="17:18-17:36" operationName="+">
+                <source xsi:type="ocl:NavigationOrAttributeCallExp" location="17:18-17:30" name="name">
+                  <source xsi:type="ocl:NavigationOrAttributeCallExp" location="17:18-17:25" name="class">
+                    <source xsi:type="ocl:VariableExp" location="17:18-17:19" referredVariable="/0/@elements.0/@definition/@feature/@initExpression/@iterators.0"/>
+                  </source>
+                </source>
+                <arguments xsi:type="ocl:StringExp" location="17:33-17:36" stringSymbol="_"/>
+              </source>
+              <arguments xsi:type="ocl:NavigationOrAttributeCallExp" location="17:39-17:45" name="name">
+                <source xsi:type="ocl:VariableExp" location="17:39-17:40" referredVariable="/0/@elements.0/@definition/@feature/@initExpression/@iterators.0"/>
+              </arguments>
+            </body>
+            <iterators location="17:14-17:15" varName="e" variableExp="/0/@elements.0/@definition/@feature/@initExpression/@body/@source/@source/@source/@source /0/@elements.0/@definition/@feature/@initExpression/@body/@arguments.0/@source"/>
+          </initExpression>
+          <type xsi:type="ocl:SequenceType" location="15:29-15:66">
+            <elementType xsi:type="ocl:OclModelElement" location="15:38-15:65" name="MethodDefinition" model="/3"/>
+          </type>
+        </feature>
+      </definition>
+    </elements>
+    <elements xsi:type="atl:Helper" location="26:1-31:12">
+      <commentsBefore>-- This helper builds the content of the table cell associated with the context</commentsBefore>
+      <commentsBefore>-- MethodDefinition (row) and the input MethodDefinition (column).</commentsBefore>
+      <commentsBefore>-- The computed value corresponds to the number of calls of the second method</commentsBefore>
+      <commentsBefore>-- within the first method definition.</commentsBefore>
+      <commentsBefore>-- CONTEXT:	JavaSource!MethodDefinition</commentsBefore>
+      <commentsBefore>-- IN:		JavaSource!MethodDefinition</commentsBefore>
+      <commentsBefore>-- RETURN:	String</commentsBefore>
+      <commentsAfter>-------------------------------------------------------------------------------</commentsAfter>
+      <commentsAfter>-- RULES ----------------------------------------------------------------------</commentsAfter>
+      <commentsAfter>-------------------------------------------------------------------------------</commentsAfter>
+      <commentsAfter>-- Rule 'Main'</commentsAfter>
+      <commentsAfter>-- This rule generates the Table as well as its first row.</commentsAfter>
+      <commentsAfter>-- First row cells contain the different defined method, in the format</commentsAfter>
+      <commentsAfter>-- 'class_name.method_name', ordered by the value of the build string.</commentsAfter>
+      <definition location="26:8-31:11">
+        <feature xsi:type="ocl:Operation" location="27:8-31:11" name="computeContent">
+          <parameters location="27:23-27:56" varName="col" variableExp="/0/@elements.1/@definition/@feature/@body/@source/@body/@source/@arguments.0/@source /0/@elements.1/@definition/@feature/@body/@source/@body/@arguments.0/@arguments.0/@source/@source">
+            <type xsi:type="ocl:OclModelElement" location="27:29-27:56" name="MethodDefinition" model="/6"/>
+          </parameters>
+          <returnType xsi:type="ocl:StringType" location="27:60-27:66"/>
+          <body xsi:type="ocl:CollectionOperationCallExp" location="28:2-31:11" operationName="size">
+            <source xsi:type="ocl:IteratorExp" location="28:2-30:47" name="select">
+              <source xsi:type="ocl:NavigationOrAttributeCallExp" location="28:2-28:18" name="invocations">
+                <source xsi:type="ocl:VariableExp" location="28:2-28:6" referredVariable="/7"/>
+              </source>
+              <body xsi:type="ocl:OperatorCallExp" location="29:16-30:46" operationName="and">
+                <source xsi:type="ocl:OperatorCallExp" location="29:16-29:40" operationName="=">
+                  <source xsi:type="ocl:NavigationOrAttributeCallExp" location="29:16-29:29" name="name">
+                    <source xsi:type="ocl:NavigationOrAttributeCallExp" location="29:16-29:24" name="method">
+                      <source xsi:type="ocl:VariableExp" location="29:16-29:17" referredVariable="/0/@elements.1/@definition/@feature/@body/@source/@iterators.0"/>
+                    </source>
+                  </source>
+                  <arguments xsi:type="ocl:NavigationOrAttributeCallExp" location="29:32-29:40" name="name">
+                    <source xsi:type="ocl:VariableExp" location="29:32-29:35" referredVariable="/0/@elements.1/@definition/@feature/@parameters.0"/>
+                  </arguments>
+                </source>
+                <arguments xsi:type="ocl:OperatorCallExp" location="30:10-30:46" operationName="=">
+                  <source xsi:type="ocl:NavigationOrAttributeCallExp" location="30:10-30:29" name="name">
+                    <source xsi:type="ocl:NavigationOrAttributeCallExp" location="30:10-30:24" name="class">
+                      <source xsi:type="ocl:NavigationOrAttributeCallExp" location="30:10-30:18" name="method">
+                        <source xsi:type="ocl:VariableExp" location="30:10-30:11" referredVariable="/0/@elements.1/@definition/@feature/@body/@source/@iterators.0"/>
+                      </source>
+                    </source>
+                  </source>
+                  <arguments xsi:type="ocl:NavigationOrAttributeCallExp" location="30:32-30:46" name="name">
+                    <source xsi:type="ocl:NavigationOrAttributeCallExp" location="30:32-30:41" name="class">
+                      <source xsi:type="ocl:VariableExp" location="30:32-30:35" referredVariable="/0/@elements.1/@definition/@feature/@parameters.0"/>
+                    </source>
+                  </arguments>
+                </arguments>
+              </body>
+              <iterators location="29:12-29:13" varName="i" variableExp="/0/@elements.1/@definition/@feature/@body/@source/@body/@source/@source/@source/@source /0/@elements.1/@definition/@feature/@body/@source/@body/@arguments.0/@source/@source/@source/@source"/>
+            </source>
+          </body>
+        </feature>
+        <context_ location="26:8-26:43">
+          <context_ xsi:type="ocl:OclModelElement" location="26:16-26:43" name="MethodDefinition" model="/5"/>
+        </context_>
+      </definition>
+    </elements>
+    <elements xsi:type="atl:MatchedRule" location="41:1-72:2" name="Main">
+      <commentsBefore>-------------------------------------------------------------------------------</commentsBefore>
+      <commentsBefore>-- RULES ----------------------------------------------------------------------</commentsBefore>
+      <commentsBefore>-------------------------------------------------------------------------------</commentsBefore>
+      <commentsBefore>-- Rule 'Main'</commentsBefore>
+      <commentsBefore>-- This rule generates the Table as well as its first row.</commentsBefore>
+      <commentsBefore>-- First row cells contain the different defined method, in the format</commentsBefore>
+      <commentsBefore>-- 'class_name.method_name', ordered by the value of the build string.</commentsBefore>
+      <outPattern location="45:2-63:4">
+        <commentsAfter>-- Former version, with distinct ... foreach</commentsAfter>
+        <commentsAfter>-- </commentsAfter>
+        <commentsAfter>--Title cols = 'class_name.method_name'</commentsAfter>
+        <commentsAfter>--title_cols : distinct Table!Cell</commentsAfter>
+        <commentsAfter>--				foreach(mDef in thisModule.allMethodDefs)(</commentsAfter>
+        <commentsAfter>--	content &lt;- mDef.class.name + '.' + mDef.name</commentsAfter>
+        <commentsAfter>--)</commentsAfter>
+        <elements xsi:type="atl:SimpleOutPatternElement" location="47:3-53:4" varName="t">
+          <commentsBefore>-- Table is composed of the first row + data rows</commentsBefore>
+          <type xsi:type="ocl:OclModelElement" location="47:7-47:18" name="Table" model="/9"/>
+          <bindings location="48:4-52:9" propertyName="rows">
+            <value xsi:type="ocl:SequenceExp" location="49:5-52:9">
+              <elements xsi:type="ocl:VariableExp" location="49:14-49:23" referredVariable="/0/@elements.2/@outPattern/@elements.1"/>
+              <elements xsi:type="ocl:IteratorExp" location="50:8-51:56" name="collect">
+                <source xsi:type="ocl:NavigationOrAttributeCallExp" location="50:8-50:32" name="allMethodDefs">
+                  <source xsi:type="ocl:VariableExp" location="50:8-50:18" referredVariable="/10"/>
+                </source>
+                <body xsi:type="ocl:OperationCallExp" location="51:23-51:55" operationName="resolveTemp">
+                  <source xsi:type="ocl:VariableExp" location="51:23-51:33" referredVariable="/11"/>
+                  <arguments xsi:type="ocl:VariableExp" location="51:46-51:47" referredVariable="/0/@elements.2/@outPattern/@elements.0/@bindings.0/@value/@elements.1/@iterators.0"/>
+                  <arguments xsi:type="ocl:StringExp" location="51:49-51:54" stringSymbol="row"/>
+                </body>
+                <iterators location="51:19-51:20" varName="e" variableExp="/0/@elements.2/@outPattern/@elements.0/@bindings.0/@value/@elements.1/@body/@arguments.0"/>
+              </elements>
+            </value>
+          </bindings>
+        </elements>
+        <elements xsi:type="atl:SimpleOutPatternElement" location="55:3-59:4" varName="first_row" variableExp="/0/@elements.2/@outPattern/@elements.0/@bindings.0/@value/@elements.0">
+          <commentsBefore>-- First row is composed of the first column + title columns</commentsBefore>
+          <type xsi:type="ocl:OclModelElement" location="55:15-55:24" name="Row" model="/12"/>
+          <bindings location="57:4-58:57" propertyName="cells">
+            <commentsBefore>--			cells &lt;- Sequence{first_col, title_cols}</commentsBefore>
+            <value xsi:type="ocl:CollectionOperationCallExp" location="57:13-58:57" operationName="flatten">
+              <source xsi:type="ocl:SequenceExp" location="57:13-58:44">
+                <elements xsi:type="ocl:VariableExp" location="57:22-57:31" referredVariable="/0/@elements.2/@outPattern/@elements.2"/>
+                <elements xsi:type="ocl:IteratorExp" location="57:33-58:43" name="collect">
+                  <source xsi:type="ocl:NavigationOrAttributeCallExp" location="57:33-57:57" name="allMethodDefs">
+                    <source xsi:type="ocl:VariableExp" location="57:33-57:43" referredVariable="/13"/>
+                  </source>
+                  <body xsi:type="ocl:OperationCallExp" location="58:18-58:42" operationName="TitleCols">
+                    <source xsi:type="ocl:VariableExp" location="58:18-58:28" referredVariable="/14"/>
+                    <arguments xsi:type="ocl:VariableExp" location="58:39-58:41" referredVariable="/0/@elements.2/@outPattern/@elements.1/@bindings.0/@value/@source/@elements.1/@iterators.0"/>
+                  </body>
+                  <iterators location="58:13-58:15" varName="md" variableExp="/0/@elements.2/@outPattern/@elements.1/@bindings.0/@value/@source/@elements.1/@body/@arguments.0"/>
+                </elements>
+              </source>
+            </value>
+          </bindings>
+        </elements>
+        <elements xsi:type="atl:SimpleOutPatternElement" location="61:3-63:4" varName="first_col" variableExp="/0/@elements.2/@outPattern/@elements.1/@bindings.0/@value/@source/@elements.0">
+          <commentsBefore>-- First column empty</commentsBefore>
+          <commentsAfter>-- Former version, with distinct ... foreach</commentsAfter>
+          <commentsAfter>-- </commentsAfter>
+          <commentsAfter>--Title cols = 'class_name.method_name'</commentsAfter>
+          <commentsAfter>--title_cols : distinct Table!Cell</commentsAfter>
+          <commentsAfter>--				foreach(mDef in thisModule.allMethodDefs)(</commentsAfter>
+          <commentsAfter>--	content &lt;- mDef.class.name + '.' + mDef.name</commentsAfter>
+          <commentsAfter>--)</commentsAfter>
+          <type xsi:type="ocl:OclModelElement" location="61:15-61:25" name="Cell" model="/15"/>
+          <bindings location="62:4-62:17" propertyName="content">
+            <value xsi:type="ocl:StringExp" location="62:15-62:17" stringSymbol=""/>
+          </bindings>
+        </elements>
+      </outPattern>
+      <inPattern location="42:2-43:28">
+        <elements xsi:type="atl:SimpleInPatternElement" location="43:3-43:28" varName="s">
+          <type xsi:type="ocl:OclModelElement" location="43:7-43:28" name="JavaSource" model="/8"/>
+        </elements>
+      </inPattern>
+    </elements>
+    <elements xsi:type="atl:LazyMatchedRule" location="74:1-81:2" name="TitleCols" isUnique="true">
+      <commentsAfter>-- Rule 'MethodDefinition'</commentsAfter>
+      <commentsAfter>-- This rule generates the content of the table, including the first cell of</commentsAfter>
+      <commentsAfter>-- each row, which identifies a method (format 'class_name.method_name').</commentsAfter>
+      <outPattern location="77:2-80:4">
+        <elements xsi:type="atl:SimpleOutPatternElement" location="78:3-80:4" varName="tFilled">
+          <type xsi:type="ocl:OclModelElement" location="78:12-78:22" name="Cell" model="/17"/>
+          <bindings location="79:4-79:44" propertyName="content">
+            <value xsi:type="ocl:OperatorCallExp" location="79:15-79:44" operationName="+">
+              <source xsi:type="ocl:OperatorCallExp" location="79:15-79:34" operationName="+">
+                <source xsi:type="ocl:NavigationOrAttributeCallExp" location="79:15-79:28" name="name">
+                  <source xsi:type="ocl:NavigationOrAttributeCallExp" location="79:15-79:23" name="class">
+                    <source xsi:type="ocl:VariableExp" location="79:15-79:17" referredVariable="/0/@elements.3/@inPattern/@elements.0"/>
+                  </source>
+                </source>
+                <arguments xsi:type="ocl:StringExp" location="79:31-79:34" stringSymbol="."/>
+              </source>
+              <arguments xsi:type="ocl:NavigationOrAttributeCallExp" location="79:37-79:44" name="name">
+                <source xsi:type="ocl:VariableExp" location="79:37-79:39" referredVariable="/0/@elements.3/@inPattern/@elements.0"/>
+              </arguments>
+            </value>
+          </bindings>
+        </elements>
+      </outPattern>
+      <inPattern location="75:2-76:34">
+        <elements xsi:type="atl:SimpleInPatternElement" location="76:3-76:34" varName="md" variableExp="/0/@elements.3/@outPattern/@elements.0/@bindings.0/@value/@source/@source/@source/@source /0/@elements.3/@outPattern/@elements.0/@bindings.0/@value/@arguments.0/@source">
+          <type xsi:type="ocl:OclModelElement" location="76:7-76:34" name="MethodDefinition" model="/16"/>
+        </elements>
+      </inPattern>
+    </elements>
+    <elements xsi:type="atl:MatchedRule" location="86:1-104:2" name="MethodDefinition">
+      <commentsBefore>-- Rule 'MethodDefinition'</commentsBefore>
+      <commentsBefore>-- This rule generates the content of the table, including the first cell of</commentsBefore>
+      <commentsBefore>-- each row, which identifies a method (format 'class_name.method_name').</commentsBefore>
+      <outPattern location="90:2-99:4">
+        <commentsAfter>-- Data cells = nb of calls of each method within a method definition</commentsAfter>
+        <commentsAfter>--		cels : distinct Table!Cell foreach(mDef in thisModule.allMethodDefs)(</commentsAfter>
+        <commentsAfter>--			content &lt;- m.computeContent(mDef).toString()</commentsAfter>
+        <commentsAfter>--		)</commentsAfter>
+        <elements xsi:type="atl:SimpleOutPatternElement" location="92:3-95:4" varName="row">
+          <commentsBefore>-- Rows are composed of the first (title) cell + data cells</commentsBefore>
+          <type xsi:type="ocl:OclModelElement" location="92:9-92:18" name="Row" model="/19"/>
+          <bindings location="93:4-94:60" propertyName="cells">
+            <value xsi:type="ocl:CollectionOperationCallExp" location="93:13-94:60" operationName="flatten">
+              <source xsi:type="ocl:SequenceExp" location="93:13-94:47">
+                <elements xsi:type="ocl:VariableExp" location="93:22-93:31" referredVariable="/0/@elements.4/@outPattern/@elements.1"/>
+                <elements xsi:type="ocl:IteratorExp" location="93:33-94:46" name="collect">
+                  <source xsi:type="ocl:NavigationOrAttributeCallExp" location="93:33-93:57" name="allMethodDefs">
+                    <source xsi:type="ocl:VariableExp" location="93:33-93:43" referredVariable="/20"/>
+                  </source>
+                  <body xsi:type="ocl:OperationCallExp" location="94:18-94:45" operationName="DataCells">
+                    <source xsi:type="ocl:VariableExp" location="94:18-94:28" referredVariable="/21"/>
+                    <arguments xsi:type="ocl:VariableExp" location="94:39-94:41" referredVariable="/0/@elements.4/@outPattern/@elements.0/@bindings.0/@value/@source/@elements.1/@iterators.0"/>
+                    <arguments xsi:type="ocl:VariableExp" location="94:43-94:44" referredVariable="/0/@elements.4/@inPattern/@elements.0"/>
+                  </body>
+                  <iterators location="94:13-94:15" varName="md" variableExp="/0/@elements.4/@outPattern/@elements.0/@bindings.0/@value/@source/@elements.1/@body/@arguments.0"/>
+                </elements>
+              </source>
+            </value>
+          </bindings>
+        </elements>
+        <elements xsi:type="atl:SimpleOutPatternElement" location="97:3-99:4" varName="title_cel" variableExp="/0/@elements.4/@outPattern/@elements.0/@bindings.0/@value/@source/@elements.0">
+          <commentsBefore>-- Title cell = 'class_name.method_name'</commentsBefore>
+          <commentsAfter>-- Data cells = nb of calls of each method within a method definition</commentsAfter>
+          <commentsAfter>--		cels : distinct Table!Cell foreach(mDef in thisModule.allMethodDefs)(</commentsAfter>
+          <commentsAfter>--			content &lt;- m.computeContent(mDef).toString()</commentsAfter>
+          <commentsAfter>--		)</commentsAfter>
+          <type xsi:type="ocl:OclModelElement" location="97:15-97:25" name="Cell" model="/22"/>
+          <bindings location="98:4-98:42" propertyName="content">
+            <value xsi:type="ocl:OperatorCallExp" location="98:15-98:42" operationName="+">
+              <source xsi:type="ocl:OperatorCallExp" location="98:15-98:33" operationName="+">
+                <source xsi:type="ocl:NavigationOrAttributeCallExp" location="98:15-98:27" name="name">
+                  <source xsi:type="ocl:NavigationOrAttributeCallExp" location="98:15-98:22" name="class">
+                    <source xsi:type="ocl:VariableExp" location="98:15-98:16" referredVariable="/0/@elements.4/@inPattern/@elements.0"/>
+                  </source>
+                </source>
+                <arguments xsi:type="ocl:StringExp" location="98:30-98:33" stringSymbol="."/>
+              </source>
+              <arguments xsi:type="ocl:NavigationOrAttributeCallExp" location="98:36-98:42" name="name">
+                <source xsi:type="ocl:VariableExp" location="98:36-98:37" referredVariable="/0/@elements.4/@inPattern/@elements.0"/>
+              </arguments>
+            </value>
+          </bindings>
+        </elements>
+      </outPattern>
+      <inPattern location="87:2-88:34">
+        <elements xsi:type="atl:SimpleInPatternElement" location="88:3-88:34" varName="m" variableExp="/0/@elements.4/@outPattern/@elements.0/@bindings.0/@value/@source/@elements.1/@body/@arguments.1 /0/@elements.4/@outPattern/@elements.1/@bindings.0/@value/@source/@source/@source/@source /0/@elements.4/@outPattern/@elements.1/@bindings.0/@value/@arguments.0/@source">
+          <type xsi:type="ocl:OclModelElement" location="88:7-88:34" name="MethodDefinition" model="/18"/>
+        </elements>
+      </inPattern>
+    </elements>
+    <elements xsi:type="atl:LazyMatchedRule" location="106:1-114:2" name="DataCells">
+      <outPattern location="110:2-113:4">
+        <elements xsi:type="atl:SimpleOutPatternElement" location="111:3-113:4" varName="cell">
+          <type xsi:type="ocl:OclModelElement" location="111:9-111:19" name="Cell" model="/25"/>
+          <bindings location="112:4-112:46" propertyName="content">
+            <value xsi:type="ocl:OperationCallExp" location="112:15-112:46" operationName="toString">
+              <source xsi:type="ocl:OperationCallExp" location="112:15-112:35" operationName="computeContent">
+                <source xsi:type="ocl:VariableExp" location="112:15-112:16" referredVariable="/0/@elements.5/@inPattern/@elements.1"/>
+                <arguments xsi:type="ocl:VariableExp" location="112:32-112:34" referredVariable="/0/@elements.5/@inPattern/@elements.0"/>
+              </source>
+            </value>
+          </bindings>
+        </elements>
+      </outPattern>
+      <inPattern location="107:2-109:33">
+        <elements xsi:type="atl:SimpleInPatternElement" location="108:3-108:34" varName="md" variableExp="/0/@elements.5/@outPattern/@elements.0/@bindings.0/@value/@source/@arguments.0">
+          <type xsi:type="ocl:OclModelElement" location="108:7-108:34" name="MethodDefinition" model="/23"/>
+        </elements>
+        <elements xsi:type="atl:SimpleInPatternElement" location="109:3-109:33" varName="m" variableExp="/0/@elements.5/@outPattern/@elements.0/@bindings.0/@value/@source/@source">
+          <type xsi:type="ocl:OclModelElement" location="109:6-109:33" name="MethodDefinition" model="/24"/>
+        </elements>
+      </inPattern>
+    </elements>
+  </atl:Module>
+  <ocl:OclModel location="5:14-5:19" name="Table" model="/0/@outModels.0"/>
+  <ocl:OclModel location="5:30-5:40" name="JavaSource" model="/0/@inModels.0"/>
+  <ocl:OclModel location="15:38-15:48" name="JavaSource" elements="/0/@elements.0/@definition/@feature/@type/@elementType"/>
+  <ocl:OclModel location="16:2-16:12" name="JavaSource" elements="/0/@elements.0/@definition/@feature/@initExpression/@source/@source"/>
+  <ocl:OclModel location="26:16-26:26" name="JavaSource" elements="/0/@elements.1/@definition/@context_/@context_"/>
+  <ocl:OclModel location="27:29-27:39" name="JavaSource" elements="/0/@elements.1/@definition/@feature/@parameters.0/@type"/>
+  <ocl:VariableDeclaration location="28:2-28:6" varName="self" variableExp="/0/@elements.1/@definition/@feature/@body/@source/@source/@source"/>
+  <ocl:OclModel location="43:7-43:17" name="JavaSource" elements="/0/@elements.2/@inPattern/@elements.0/@type"/>
+  <ocl:OclModel location="47:7-47:12" name="Table" elements="/0/@elements.2/@outPattern/@elements.0/@type"/>
+  <ocl:VariableDeclaration location="50:8-50:18" varName="thisModule" variableExp="/0/@elements.2/@outPattern/@elements.0/@bindings.0/@value/@elements.1/@source/@source"/>
+  <ocl:VariableDeclaration location="51:23-51:33" varName="thisModule" variableExp="/0/@elements.2/@outPattern/@elements.0/@bindings.0/@value/@elements.1/@body/@source"/>
+  <ocl:OclModel location="55:15-55:20" name="Table" elements="/0/@elements.2/@outPattern/@elements.1/@type"/>
+  <ocl:VariableDeclaration location="57:33-57:43" varName="thisModule" variableExp="/0/@elements.2/@outPattern/@elements.1/@bindings.0/@value/@source/@elements.1/@source/@source"/>
+  <ocl:VariableDeclaration location="58:18-58:28" varName="thisModule" variableExp="/0/@elements.2/@outPattern/@elements.1/@bindings.0/@value/@source/@elements.1/@body/@source"/>
+  <ocl:OclModel location="61:15-61:20" name="Table" elements="/0/@elements.2/@outPattern/@elements.2/@type"/>
+  <ocl:OclModel location="76:7-76:17" name="JavaSource" elements="/0/@elements.3/@inPattern/@elements.0/@type"/>
+  <ocl:OclModel location="78:12-78:17" name="Table" elements="/0/@elements.3/@outPattern/@elements.0/@type"/>
+  <ocl:OclModel location="88:7-88:17" name="JavaSource" elements="/0/@elements.4/@inPattern/@elements.0/@type"/>
+  <ocl:OclModel location="92:9-92:14" name="Table" elements="/0/@elements.4/@outPattern/@elements.0/@type"/>
+  <ocl:VariableDeclaration location="93:33-93:43" varName="thisModule" variableExp="/0/@elements.4/@outPattern/@elements.0/@bindings.0/@value/@source/@elements.1/@source/@source"/>
+  <ocl:VariableDeclaration location="94:18-94:28" varName="thisModule" variableExp="/0/@elements.4/@outPattern/@elements.0/@bindings.0/@value/@source/@elements.1/@body/@source"/>
+  <ocl:OclModel location="97:15-97:20" name="Table" elements="/0/@elements.4/@outPattern/@elements.1/@type"/>
+  <ocl:OclModel location="108:7-108:17" name="JavaSource" elements="/0/@elements.5/@inPattern/@elements.0/@type"/>
+  <ocl:OclModel location="109:6-109:16" name="JavaSource" elements="/0/@elements.5/@inPattern/@elements.1/@type"/>
+  <ocl:OclModel location="111:9-111:14" name="Table" elements="/0/@elements.5/@outPattern/@elements.0/@type"/>
+</xmi:XMI>
